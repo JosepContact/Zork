@@ -2,7 +2,13 @@
 #include "string.h"
 
 void World::CreateWorld(){
-
+	//The player should start in the ENTRANCE
+	int i;
+	room[0].player = true;
+	for (i = 1; i < 10; i++){
+		room[i].player == false;
+	}
+	//Adding name and description to the rooms
 	strcpy_s(room[0].name, "Entrance");
 	strcpy_s(room[1].name, "Hall");
 	strcpy_s(room[2].name, "Security");
@@ -14,7 +20,7 @@ void World::CreateWorld(){
 	strcpy_s(room[8].name, "Greek");
 	strcpy_s(room[9].name, "Minotaur");
 
-	strcpy_s(room[0].desc, "At the west you spot several ticket windows. There are huge beautiful columns around you that have pictures of the art that can be found.\n 'Looks like this is the spot!' you think.");
+	strcpy_s(room[0].desc, "At the west you spot several ticket windows. There are huge beautiful columns around you that have pictures of the art that can be found in the museum.\n'Looks like this is the spot!' you think.");
 	strcpy_s(room[1].desc, "There is a huge tomb in the center of the room next to some tall archs. Weird unexplainable pieces of art are all around.\nYou can see a staircase leading to the north.");
 	strcpy_s(room[2].desc, "Old tiny room with some screens and a desktop.");
 	strcpy_s(room[3].desc, "The paintings here are very well made but very depressing. The light is also poor bringing sad atmosphere.");

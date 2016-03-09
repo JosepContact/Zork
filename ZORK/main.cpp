@@ -5,11 +5,11 @@ int main(void){
 	bool game = false;
 	Museum.CreateWorld();
 	do {
-		game = Play();
+		game = Play(Museum);
 	} while (!game);
-	printf("Thanks for playing\n");
+	printf("Thanks for playing!\n");
 	getchar();
-	getchar();
+
 	return 0;
 
 }

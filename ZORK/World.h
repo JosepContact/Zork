@@ -1,18 +1,17 @@
 #ifndef WORLD_H_
-#define WORLD_H
-
-
-
+#define WORLD_H____
+#define NEWLINE printf("\n");
 class World {
 public:
 	class rooms {
 	public:
 		char name[20];
 		char desc[500];
-		
+		bool player;
+
 		class exits{
 		public:
-			int door;
+			int door=0;
 		}exit[4];
 
 
@@ -22,8 +21,8 @@ public:
 	void World::CreateWorld();
 
 };
-
-
-bool Play();
+void currpos(World Museum);
+bool Play(World Museum);
 
 #endif
+
