@@ -14,10 +14,9 @@ public:
 
 public:
 	void World::CreateWorld();
-
 };
 void currpos(World Museum);
 bool Play(World Museum);
-
+bool updatepos(World Museum, int);
 #endif
 
