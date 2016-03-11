@@ -69,7 +69,10 @@
     <ClCompile Include="Play.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Exit.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
