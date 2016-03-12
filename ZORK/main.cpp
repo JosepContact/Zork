@@ -5,8 +5,8 @@ int main(void){
 	bool game = false;
 	Museum.CreateWorld();
 	do {
-		currpos(Museum);
-		game = Play(Museum);
+		Museum.currpos();
+		game = Museum.Play();
 	} while (!game);
 	printf("Thanks for playing!\n");
 	getchar();

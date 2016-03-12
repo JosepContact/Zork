@@ -14,9 +14,14 @@ public:
 
 public:
 	void World::CreateWorld();
+	bool World::updatepos(int);
+	void World::lookexit(int);
+	void World::currpos();
+	bool World::Play();
+	void World::OpenDoor(const int);
+	void World::CloseDoor(const int);
+	void World::HelpCommand() const;
 };
-void currpos(World Museum);
-bool Play(World Museum);
-bool updatepos(World Museum, int);
+
 #endif
 
