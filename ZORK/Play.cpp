@@ -123,7 +123,7 @@ void World::HelpCommand() const{
 }
 
 // -------- CLOSE AND OPEN DOORS COMMANDS ------------
-void World::CloseDoor(const int direction){
+void World::CloseDoor(const int &direction){
 	int i = 0;
 	for (i = 0; (i < 9); ++i){
 		if ((strcmp(exits[i].room1, players[0].currentpos) == 0) && (exits[i].dir1 == direction) || (strcmp(exits[i].room2, players[0].currentpos) == 0) && (exits[i].dir2 == direction)){
@@ -136,7 +136,7 @@ void World::CloseDoor(const int direction){
 	}
 	NEWLINE;
 }
-void World::OpenDoor(const int direction){
+void World::OpenDoor(const int &direction){
 	int i = 0;
 	for (i = 0; (i < 9); ++i){
 		if ((strcmp(exits[i].room1, players[0].currentpos) == 0) && (exits[i].dir1 == direction) || (strcmp(exits[i].room2, players[0].currentpos) == 0) && (exits[i].dir2 == direction)){
@@ -160,7 +160,7 @@ void World::currpos() const{
 }
 
 // ----------- CHECKS THE EXITS IN BOTH WAYS --------------
-bool World::updatepos(const int direction){
+bool World::updatepos(const int &direction){
 	int i = 0;
 	bool success = false;
 	for (i = 0; (i < 9) && (!success); ++i){
@@ -192,7 +192,7 @@ bool World::updatepos(const int direction){
 	return false;
 }
 // ----------- How does the exit look like? -----------
-void World::lookexit (const int direction) const{
+void World::lookexit (const int &direction) const{
 	int i = 0;
 	for (i = 0; (i < 9); ++i){
 		if ((strcmp(exits[i].room1, players[0].currentpos) == 0) && (exits[i].dir1 == direction) || (strcmp(exits[i].room2, players[0].currentpos) == 0) && (exits[i].dir2 == direction)){
