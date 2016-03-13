@@ -5,6 +5,7 @@ void World::CreateWorld(){
 	rooms = new Room[10];
 	players = new Player[1];
 	exits = new Exit[9];
+	
 	//Adding name and description to the rooms
 	// ------------ ROOMS ---------------
 	strcpy_s(rooms[0].name, "Entrance");
@@ -117,4 +118,11 @@ void World::CreateWorld(){
 	exits[8].dir1 = w;
 	exits[8].dir2 = e;
 	exits[8].locked = false;
+}
+
+void World::DestroyWorld(){
+	//Solves memory leaks
+	delete exits;
+	delete players;
+	delete rooms;
 }

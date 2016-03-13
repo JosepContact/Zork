@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include "MemLeaks.h"
 #include "World.h"
+
 int main(void){
+	ReportMemoryLeaks();
 	World Museum;
 	bool game = false;
 	Museum.CreateWorld();
@@ -8,6 +11,7 @@ int main(void){
 		Museum.currpos();
 		game = Museum.Play();
 	} while (!game);
+	Museum.DestroyWorld();
 	printf("Thanks for playing!\n");
 	getchar();
 

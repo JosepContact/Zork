@@ -4,7 +4,7 @@
 
 
 #ifndef WORLD_H_
-#define WORLD_H____
+#define WORLD_H_
 #define NEWLINE printf("\n");
 class World {
 public:
@@ -14,12 +14,13 @@ public:
 
 public:
 	void World::CreateWorld();
-	bool World::updatepos(int);
-	void World::lookexit(int);
-	void World::currpos();
 	bool World::Play();
+	void World::DestroyWorld();
+	bool World::updatepos(const int);
+	void World::lookexit(const int) const;
 	void World::OpenDoor(const int);
 	void World::CloseDoor(const int);
+	void World::currpos() const;
 	void World::HelpCommand() const;
 };
 
