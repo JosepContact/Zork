@@ -120,9 +120,10 @@ void World::CreateWorld(){
 	exits[8].locked = false;
 }
 
-void World::DestroyWorld(){
+World::~World(){
 	//Solves memory leaks
 	delete exits;
 	delete players;
 	delete rooms;
+
 }

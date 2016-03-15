@@ -11,7 +11,6 @@ int main(void){
 		Museum.currpos();
 		game = Museum.Play();
 	} while (!game);
-	Museum.DestroyWorld();
 	printf("Thanks for playing!\n");
 	getchar();
 
