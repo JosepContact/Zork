@@ -5,6 +5,7 @@ void World::CreateWorld(){
 	rooms = new Room[10];
 	players = new Player[1];
 	exits = new Exit[9];
+	items = new Item[10];
 	
 	//Adding name and description to the rooms
 	// ------------ ROOMS ---------------
@@ -118,6 +119,30 @@ void World::CreateWorld(){
 	exits[8].dir1 = w;
 	exits[8].dir2 = e;
 	exits[8].locked = false;
+
+	// ------------- ITEMS --------------
+	strcpy_s(items[0].name, "Mirror");
+	strcpy_s(items[1].name, "Lantern");
+	strcpy_s(items[2].name, "Shiny Emerald");
+	strcpy_s(items[3].name, "Sword");
+	strcpy_s(items[4].name, "Shield");
+	strcpy_s(items[5].name, "Piece Of Rod");
+	strcpy_s(items[6].name, "Rod Of Aftermath");
+	strcpy_s(items[7].name, "Store Room Key");
+	strcpy_s(items[8].name, "Greek Room Key");
+	strcpy_s(items[9].name, "Core Of The Unlimited Power");
+
+	strcpy_s(items[0].desc, "It glows, the border is made of silver.");
+	strcpy_s(items[1].desc, "It's a regular lantern.");
+	strcpy_s(items[2].desc, "This tiny piece could cost hundreds of dollars. Looks like it can be inserted somewhere.");
+	strcpy_s(items[3].desc, "It's sharp and hard but not heavy at all.");
+	strcpy_s(items[4].desc, "It's the toughest and lightest material I have ever seen! If it truly belonged to Athena, I can see why.");
+	strcpy_s(items[5].desc, "Just a part of the Rod, I'm yet to find the main thing");
+	strcpy_s(items[6].desc, "A sinister aura can be seen, it's darker than the night. You feel the evilness inside of it.");
+	strcpy_s(items[7].desc, "Because it's a key and it says 'Store'...");
+	strcpy_s(items[8].desc, "It's big and it says 'Greek Room'. You are not ashamed of your size though, you are a man.");
+	strcpy_s(items[9].desc, "Two rings, one inside of the other are spinning very quickly, there's something inside that reminds you of a nebula.\n'So cool' You say out loud.");
+
 }
 
 World::~World(){
@@ -125,4 +150,5 @@ World::~World(){
 	delete exits;
 	delete players;
 	delete rooms;
+	delete items;
 }

@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "Exit.h"
-
+#include "Item.h"
 
 #ifndef WORLD_H_
 #define WORLD_H_
@@ -11,11 +11,12 @@ public:
 	Room * rooms;
 	Exit * exits;
 	Player * players;
+	Item * items;
 
 public:
 	void World::CreateWorld();
 	bool World::Play();
-	World::~World();
+	virtual World::~World();
 	bool World::updatepos(const int &);
 	void World::lookexit(const int &) const;
 	void World::OpenDoor(const int &);
