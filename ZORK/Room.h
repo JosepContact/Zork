@@ -1,9 +1,10 @@
+#include "Entity.h"
+
 #ifndef ROOM_H_
 #define ROOM_H_
 
-class Room {
+class Room: public Entity {
 public: 
-	char name[20], desc[400];
 };
 
 #endif

@@ -69,6 +69,7 @@
     <ClCompile Include="Play.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="MemLeaks.h" />

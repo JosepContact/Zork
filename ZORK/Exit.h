@@ -1,13 +1,15 @@
+#include "Entity.h"
+
 #ifndef EXIT_H
 #define EXIT_H
 
 enum direction { s, w, n, e };
 
-class Exit {
+class Exit: public Entity {
 public:
 	bool locked;
 	int dir1, dir2;
-	char name[20], desc[200], room1[20], room2[20];
+	char room1[20], room2[20];
 };
 #endif
 

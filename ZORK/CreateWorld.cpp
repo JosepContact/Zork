@@ -125,5 +125,4 @@ World::~World(){
 	delete exits;
 	delete players;
 	delete rooms;
-
 }

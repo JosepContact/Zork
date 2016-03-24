@@ -15,13 +15,13 @@ public:
 public:
 	void World::CreateWorld();
 	bool World::Play();
+	World::~World();
 	bool World::updatepos(const int &);
 	void World::lookexit(const int &) const;
 	void World::OpenDoor(const int &);
 	void World::CloseDoor(const int &);
 	void World::currpos() const;
 	void World::HelpCommand() const;
-	World::~World();
 };
 
 #endif
