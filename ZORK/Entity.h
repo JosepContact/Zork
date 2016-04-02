@@ -3,11 +3,12 @@
 
 
 class Entity{
-
+public:
+	char * name;
+	char * desc;
 public:
 
-	char name[20];
-	char desc[300];
+	//void Entity::Look(const int &)const;
 };
 
 

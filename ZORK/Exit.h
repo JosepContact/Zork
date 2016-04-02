@@ -9,7 +9,7 @@ class Exit: public Entity {
 public:
 	bool locked;
 	int dir1, dir2;
-	char room1[20], room2[20];
+	char * room1, * room2;
 };
 #endif
 

@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "Exit.h"
 #include "Item.h"
+#include "MyString.h"
 
 #ifndef WORLD_H_
 #define WORLD_H_
@@ -14,6 +15,7 @@ public:
 	Item * items;
 
 public:
+	World::World();
 	void World::CreateWorld();
 	bool World::Play();
 	virtual World::~World();
@@ -23,6 +25,7 @@ public:
 	void World::CloseDoor(const int &);
 	void World::currpos() const;
 	void World::HelpCommand() const;
+	bool World::DropPick(const char* object);
 };
 
 #endif

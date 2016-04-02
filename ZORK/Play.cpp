@@ -1,107 +1,115 @@
 #include <stdio.h>
-#include <string.h>
+#include "MyString.h"
 #include "World.h"
+
+
 
 enum words {ONE_WORD = 1, TWO_WORDS, THREE_WORDS};
 
 bool World::Play(){
 		int n_words = 1, i;
-		char c = NULL, action[100];
+		char c = NULL, action[30], *fp = action;
 		bool valaction = false; // valaction will know if we should go outside the Play func and check position again.
 		do {
 			printf("Action: ");
-			fgets(action, 20, stdin);
+			fgets(action, 30, stdin);
+			String input(fp);
 			// Counts how many words have been inputed to later switch(n_words):
 			for (i = 0; i < strlen(action); c = action[i++]){
 				if (c == ' ') n_words++;
 			}
+			//Get the action alone
 			switch (n_words){
 			case ONE_WORD:
-				if ((strcmp(action, "quit\n")) == 0){
+				if (input == "quit\n"){
 					return true;
 				}
-				else if (strcmp(action, "go\n") == 0){ // no direction inputed case
+				else if (input == "go\n"){ // no direction inputed case
 					printf("Go where?\n");
 				}
-				else if (strcmp(action, "look\n") == 0){
+				else if (input == "look\n"){
 					valaction = true; //we don't have to call the function just go out of loop and the main() will do it
 				}
 				// --------- Moves ----------------
-				else if ((strcmp(action, "north\n") == 0) || (strcmp(action, "n\n") == 0)){
+				else if ((input ==  "north\n") || (input == "n\n")){
 					valaction = updatepos(n);
 				}
-				else if ((strcmp(action, "south\n") == 0) || (strcmp(action, "s\n") == 0)){
+				else if ((input ==  "south\n") || (input == "s\n")){
 					valaction = updatepos(s);
 				}
-				else if ((strcmp(action, "east\n") == 0) || (strcmp(action, "e\n") == 0)){
+				else if ((input == "east\n") || (input == "e\n")){
 					valaction = updatepos(e);
 				}
-				else if ((strcmp(action, "west\n") == 0) || (strcmp(action, "w\n") == 0)){
+				else if ((input == "west\n") || (input == "w\n")){
 					valaction = updatepos(w);
 				}
 				// --------------------------------
-				else if (strcmp(action, "help\n") == 0){ // help command
-				HelpCommand();
+				else if (input == "help\n"){ // help command
+					HelpCommand();
 				}
 				else printf("I don't know such action\n");
 				break;
 			case TWO_WORDS:
 				// --------------MOVES---------------
-				if ((strcmp(action, "go north\n") == 0)){
+				if (input ==  "go north\n"){
 					valaction = updatepos(n);
 				}
-				else if ((strcmp(action, "go south\n") == 0)){
+				else if (input == "go south\n"){
 					valaction = updatepos(s);
 				}
-				else if ((strcmp(action, "go east\n") == 0)){
+				else if (input == "go east\n"){
 					valaction = updatepos(e);
 				}
-				else if ((strcmp(action, "go west\n") == 0)){
+				else if (input == "go west\n"){
 					valaction = updatepos(w);
 				}
 				//--------------LOOK_EXITS--------------
-				else if ((strcmp(action, "look south\n") == 0)){
+				else if (input == "look south\n"){
 					lookexit(s);
 				}
-				else if ((strcmp(action, "look west\n") == 0)){
+				else if (input == "look west\n"){
 					lookexit(w);
 				}
-				else if ((strcmp(action, "look north\n") == 0)){
+				else if (input == "look north\n"){
 					lookexit(n);
 				}
-				else if ((strcmp(action, "look east\n") == 0)){
+				else if (input ==  "look east\n"){
 					lookexit(e);
 				}
-				else if ((strcmp(action, "open door\n") == 0) || ((strcmp(action, "close door\n") == 0))){ // there can be from 1 to 4 doors
+				else if ((input == "open door\n") || ( input == "close door\n")){ // there can be from 1 to 4 doors
 					printf("What door?\n");
+				}
+				//--------------PICK_DROP_ITEMS-----------
+				else if ((input == "pick") || (input == "drop")){
+					printf("dafuq");
 				}
 				else printf("What?\n");
 				break;
 			case THREE_WORDS:
 
 				// ----------OPEN/CLOSE DOORS --------------
-				if ((strcmp(action, "open south door\n") == 0) || ((strcmp(action, "open door south\n") == 0)) || (strcmp(action, "unlock south door\n") == 0) || ((strcmp(action, "unlock door south\n") == 0))){
+				if ((input == "open south door\n") || (input == "open door south\n") || (input ==  "unlock south door\n") || (input == "unlock door south\n")){
 					OpenDoor(s);
 				}
-				else if ((strcmp(action, "open east door\n") == 0) || ((strcmp(action, "open door east\n") == 0)) || (strcmp(action, "unlock east door\n") == 0) || ((strcmp(action, "unlock door east\n") == 0))){
+				else if ((input == "open east door\n") || (input == "open door east\n") || (input == "unlock east door\n") || (input == "unlock door east\n")){
 					OpenDoor(e);
 				}
-				else if ((strcmp(action, "open north door\n") == 0) || ((strcmp(action, "open door north\n") == 0)) || (strcmp(action, "unlock north door\n") == 0) || ((strcmp(action, "unlock door north\n") == 0))){
+				else if ((input == "open north door\n") || (input == "open door north\n") || (input == "unlock north door\n") || (input == "unlock door north\n")){
 					OpenDoor(n);
 				}
-				else if ((strcmp(action, "open west door\n") == 0) || ((strcmp(action, "open door west\n") == 0)) || (strcmp(action, "unlock west door\n") == 0) || ((strcmp(action, "unlock door west\n") == 0))){
+				else if ((input == "open west door\n") || (input == "open door west\n") || (input == "unlock west door\n") || (input == "unlock door west\n")){
 					OpenDoor(w);
 				}
-				else if ((strcmp(action, "close south door\n") == 0) || ((strcmp(action, "close door south\n") == 0)) || (strcmp(action, "lock south door\n") == 0) || ((strcmp(action, "lock door south\n") == 0))){
+				else if ((input == "close south door\n") || (input == "close door south\n") || (input == "lock south door\n") || (input == "lock door south\n")){
 					CloseDoor(s);
 				}
-				else if ((strcmp(action, "close east door\n") == 0) || ((strcmp(action, "close door east\n") == 0)) || (strcmp(action, "lock east door\n") == 0) || ((strcmp(action, "lock door east\n") == 0))){
+				else if ((input == "close east door\n") || (input == "close door east\n") || (input == "lock east door\n") || (input == "lock door east\n")){
 					CloseDoor(e);
 				}
-				else if ((strcmp(action, "close north door\n") == 0) || ((strcmp(action, "close door north\n") == 0)) || (strcmp(action, "lock north door\n") == 0) || ((strcmp(action, "lock door north\n") == 0))){
+				else if ((input == "close north door\n") || (input == "close door north\n") || (input == "lock north door\n") || (input == "lock door north\n")){
 					CloseDoor(n);
 				}
-				else if ((strcmp(action, "close west door\n") == 0) || ((strcmp(action, "close door west\n") == 0)) || (strcmp(action, "lock west door\n") == 0) || ((strcmp(action, "lock door west\n") == 0))){
+				else if ((input == "close west door\n") || (input == "close door west\n") || (input == "lock west door\n") || (input == "lock door west\n")){
 					CloseDoor(w);
 				}
 				else printf("What?\n");
@@ -115,6 +123,10 @@ bool World::Play(){
 		} while (!valaction);
 		return false;
 }
+bool World::DropPick(const char* object){
+
+
+}
 
 void World::HelpCommand() const{
 	// ------- HELP COMMANDS----------
@@ -124,10 +136,12 @@ void World::HelpCommand() const{
 
 // -------- CLOSE AND OPEN DOORS COMMANDS ------------
 void World::CloseDoor(const int &direction){
-	int i = 0;
-	for (i = 0; (i < 9); ++i){
-		if ((strcmp(exits[i].room1, players[0].currentpos) == 0) && (exits[i].dir1 == direction) || (strcmp(exits[i].room2, players[0].currentpos) == 0) && (exits[i].dir2 == direction)){
-			if (exits[i].locked == false){
+
+	String CurrentPos(players[0].currentpos);
+
+	for (int i = 0; (i < 9); ++i){
+		if ((CurrentPos == exits[i].room1) && (exits[i].dir1 == direction) || (CurrentPos == exits[i].room2) && (exits[i].dir2 == direction)){
+			if (!exits[i].locked){
 				exits[i].locked = true;
 				printf("You locked the door.\n");
 			}
@@ -150,9 +164,9 @@ void World::OpenDoor(const int &direction){
 	NEWLINE;
 }
 void World::currpos() const{ 
-	int i = 0;
-	for (i = 0; i < 10; i++){
-		if (strcmp(rooms[i].name, players[0].currentpos) == 0){
+	String CurrentPos(players[0].currentpos);
+	for (int i = 0; i < 10; i++){
+		if (CurrentPos == rooms[i].name){
 			printf("- %s\n%s\n", rooms[i].name, rooms[i].desc);
 			NEWLINE;
 		}
@@ -193,11 +207,12 @@ bool World::updatepos(const int &direction){
 }
 // ----------- How does the exit look like? -----------
 void World::lookexit (const int &direction) const{
-	int i = 0;
-	for (i = 0; (i < 9); ++i){
-		if ((strcmp(exits[i].room1, players[0].currentpos) == 0) && (exits[i].dir1 == direction) || (strcmp(exits[i].room2, players[0].currentpos) == 0) && (exits[i].dir2 == direction)){
+	String CurrentPos(players[0].currentpos);
+	for (int i = 0; (i < 9); ++i){
+		if ((CurrentPos == exits[i].room1) && (exits[i].dir1 == direction) || (CurrentPos == exits[i].room2) && (exits[i].dir2 == direction)){
 			printf("- %s\n%s\n", exits[i].name, exits[i].desc);
 			NEWLINE;
 			}
 		}
 	}
+
