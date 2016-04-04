@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClCompile Include="CreateWorld.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Play.cpp" />
   </ItemGroup>
   <ItemGroup>

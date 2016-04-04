@@ -10,8 +10,8 @@ class String{
 public:
 	char * string;
 public:
-	String::String(char * string){
-		int len = length(string);
+	String::String(const char * string){
+		uint len = length(string);
 		this->string = new char[len + 1];
 		strcpy_s(this->string, len + 1,  string);
 	}
@@ -33,6 +33,7 @@ public:
 	bool String::operator==(char * string) const {
 		return (strcmp(this->string, string) == 0);
 	}
+	char * String::get_word(int nword);
 	String::~String(){
 		delete[] this->string;
 	}
@@ -42,3 +43,4 @@ public:
 
 
 #endif
+

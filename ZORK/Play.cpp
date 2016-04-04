@@ -8,12 +8,15 @@ enum words {ONE_WORD = 1, TWO_WORDS, THREE_WORDS};
 
 bool World::Play(){
 		int n_words = 1, i;
-		char c = NULL, action[30], *fp = action;
+		char c = NULL, action[30], *fp = action, *supp;
 		bool valaction = false; // valaction will know if we should go outside the Play func and check position again.
 		do {
 			printf("Action: ");
 			fgets(action, 30, stdin);
 			String input(fp);
+			supp = input.get_word(2);
+			printf("%s\n", supp);
+			delete[] supp;
 			// Counts how many words have been inputed to later switch(n_words):
 			for (i = 0; i < strlen(action); c = action[i++]){
 				if (c == ' ') n_words++;
@@ -51,6 +54,7 @@ bool World::Play(){
 				break;
 			case TWO_WORDS:
 				// --------------MOVES---------------
+
 				if (input ==  "go north\n"){
 					valaction = updatepos(n);
 				}
