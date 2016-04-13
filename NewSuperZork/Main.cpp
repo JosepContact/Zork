@@ -2,11 +2,12 @@
 #include "MemLeaks.h"
 #include "World.h"
 
-
 int main(void){
 	ReportMemoryLeaks();
 	World Museum;
+
 	bool game = false;
+
 	Museum.CreateWorld();
 	do {
 		Museum.currpos();

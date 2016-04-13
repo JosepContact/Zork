@@ -1,5 +1,5 @@
 #include "World.h"
-#include "String.h"
+#include "ThisString.h"
 
 #define NROOM 10
 #define NPLAY 1
@@ -14,7 +14,7 @@ World::World(){
 }
 
 void World::CreateWorld(){
-	
+
 	//Adding name and description to the rooms
 	// ------------ ROOMS ---------------
 	rooms[0].name = "Entrance";
@@ -40,8 +40,8 @@ void World::CreateWorld(){
 	rooms[9].desc = "The infamous creature looks at you straight in the eyes. Fortunately, its limbs have been gripped with titanic chains\n";
 
 	//The player should start in the ENTRANCE
-
-	strcpy_s(players[0].currentpos, "Entrance");
+	players->currentpos = "Entrance";
+	
 
 	// The exits are PATHS that connect two rooms
 	// ------------- PATHS --------------
@@ -75,13 +75,13 @@ void World::CreateWorld(){
 
 	// 3.Hall - Romanticism
 	exits[3].room1 = "Hall";
-	exits[3].room2= "Romanticism";
-	exits[3].name= "Staircase";
-	exits[3].desc= "A beautiful white marble staircase that leads to darkness.";
+	exits[3].room2 = "Romanticism";
+	exits[3].name = "Staircase";
+	exits[3].desc = "A beautiful white marble staircase that leads to darkness.";
 	exits[3].dir1 = n;
 	exits[3].dir2 = s;
 	exits[3].locked = false;
-	
+
 
 	// 4.Gargoyle - Romanticism
 	exits[4].room1 = "Gargoyle";
@@ -93,7 +93,7 @@ void World::CreateWorld(){
 	exits[4].locked = false;
 
 	// 5.Store - Romanticism
-	exits[5].room1 ="Store";
+	exits[5].room1 = "Store";
 	exits[5].room2 = "Romanticism";
 	exits[5].name = "Wooden Door";
 	exits[5].desc = "It's just a door.";
@@ -104,14 +104,14 @@ void World::CreateWorld(){
 	// 6.Gargoyle - Egyptian
 	exits[6].room1 = "Gargoyle";
 	exits[6].room2 = "Egyptian";
-	exits[6].name= "Arch";
-	exits[6].desc= "There is a cool arch, looks like there may be a room behind it.";
+	exits[6].name = "Arch";
+	exits[6].desc = "There is a cool arch, looks like there may be a room behind it.";
 	exits[6].dir1 = n;
 	exits[6].dir2 = s;
 	exits[6].locked = false;
 
 	// 7.Romanticism - Greek
-	exits[7].room1 ="Romanticism";
+	exits[7].room1 = "Romanticism";
 	exits[7].room2 = "Greek";
 	exits[7].name = "Gates";
 	exits[7].desc = "'Some big gates we have right here huh.' You think.";
@@ -131,27 +131,27 @@ void World::CreateWorld(){
 	// ------------- ITEMS --------------
 
 	items[0].name = "Mirror";
-	items[1].name= "Lantern";
-	items[2].name= "Shiny Emerald";
-	items[3].name= "Sword";
-	items[4].name= "Shield";
-	items[5].name= "Piece Of Rod";
-	items[6].name= "Rod Of Aftermath";
-	items[7].name= "Store Room Key";
-	items[8].name= "Greek Room Key";
-	items[9].name= "Core Of Power";	
+	items[1].name = "Lantern";
+	items[2].name = "Shiny Emerald";
+	items[3].name = "Sword";
+	items[4].name = "Shield";
+	items[5].name = "Piece Of Rod";
+	items[6].name = "Rod Of Aftermath";
+	items[7].name = "Store Room Key";
+	items[8].name = "Greek Room Key";
+	items[9].name = "Core Of Power";
 
 
-	items[0].desc= "It glows, the border is made of silver.";
-	items[1].desc= "It's a regular lantern.";
-	items[2].desc= "This tiny piece could cost hundreds of dollars. Looks like it can be inserted somewhere.";
-	items[3].desc= "It's sharp and hard but not heavy at all.";
-	items[4].desc= "It's the toughest and lightest material I have ever seen! If it truly belonged to Athena, I can see why.";
-	items[5].desc= "Just a part of the Rod, I'm yet to find the main thing";
-	items[6].desc= "A sinister aura can be seen, it's darker than the night. You feel the evilness inside of it.";
-	items[7].desc= "Because it's a key and it says 'Store'...";
-	items[8].desc= "It's big and it says 'Greek Room'. You are not ashamed of your size though, you are a man.";
-	items[9].desc= "Two rings, one inside of the other are spinning very quickly, there's something inside that reminds you of a nebula.\n'So cool' You say out loud.";
+	items[0].desc = "It glows, the border is made of silver.";
+	items[1].desc = "It's a regular lantern.";
+	items[2].desc = "This tiny piece could cost hundreds of dollars. Looks like it can be inserted somewhere.";
+	items[3].desc = "It's sharp and hard but not heavy at all.";
+	items[4].desc = "It's the toughest and lightest material I have ever seen! If it truly belonged to Athena, I can see why.";
+	items[5].desc = "Just a part of the Rod, I'm yet to find the main thing";
+	items[6].desc = "A sinister aura can be seen, it's darker than the night. You feel the evilness inside of it.";
+	items[7].desc = "Because it's a key and it says 'Store'...";
+	items[8].desc = "It's big and it says 'Greek Room'. You are not ashamed of your size though, you are a man.";
+	items[9].desc = "Two rings, one inside of the other are spinning very quickly, there's something inside that reminds you of a nebula.\n'So cool' You say out loud.";
 
 	//YOU START WITH ONLY THE PIECE OF ROD SO
 
@@ -166,25 +166,25 @@ void World::CreateWorld(){
 	items[0].currentpos = "Egyptian";
 	items[2].free = false;
 	//3.Sword
-	items[0].currentpos= "Hall";
+	items[0].currentpos = "Hall";
 	items[3].free = false;
 	//4.Shield
-	items[0].currentpos= "Greek";
+	items[0].currentpos = "Greek";
 	items[4].free = false;
 	//5.Piece Of Rod
-	items[0].currentpos= "Inventory";
+	items[0].currentpos = "Inventory";
 	items[5].free = true;
 	//6.Rod Of Aftermath
-	items[0].currentpos= "None";
+	items[0].currentpos = "None";
 	items[6].free = false;
 	//7.Store Room Key
-	items[0].currentpos= "Security";
+	items[0].currentpos = "Security";
 	items[7].free = false;
 	//8.Greek Room Key
-	items[0].currentpos= "Security";
+	items[0].currentpos = "Security";
 	items[7].free = true;
 	//9.Core Of Unlimted Power
-	items[0].currentpos= "Minotaur";
+	items[0].currentpos = "Minotaur";
 	items[7].free = false;
 }
 

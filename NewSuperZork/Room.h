@@ -3,8 +3,8 @@
 #ifndef ROOM_H_
 #define ROOM_H_
 
-class Room: public Entity {
-public: 
+class Room : public Entity {
+public:
 };
 
 #endif

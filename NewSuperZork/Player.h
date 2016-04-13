@@ -3,8 +3,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-class Player: public Entity{
+class Player : public Entity{
 public:
-	char currentpos[20];
+	char * currentpos;
+
 };
 #endif

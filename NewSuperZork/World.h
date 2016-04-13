@@ -2,7 +2,6 @@
 #include "Room.h"
 #include "Exit.h"
 #include "Item.h"
-#include "MyString.h"
 
 #ifndef WORLD_H_
 #define WORLD_H_

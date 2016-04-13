@@ -5,11 +5,11 @@
 
 enum direction { s, w, n, e };
 
-class Exit: public Entity {
+class Exit : public Entity {
 public:
 	bool locked;
 	int dir1, dir2;
-	char * room1, * room2;
+	char * room1, *room2;
 };
 #endif
 
