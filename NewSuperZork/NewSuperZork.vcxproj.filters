@@ -24,7 +24,11 @@
     <ClCompile Include="CreateWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD:NewSuperZork/NewSuperZork.vcxproj.filters
     <ClCompile Include="Actions.cpp">
+=======
+    <ClCompile Include="MyString.cpp">
+>>>>>>> origin/master:ZORK/ZORK.vcxproj.filters
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
