@@ -6,14 +6,21 @@
 
 	int main(void){
 		ReportMemoryLeaks();
-		char action[30], *fp = action;
+	/*	char action[30], *fp = action;
 		fgets(action, 30, stdin);
 		String input(fp);
 		Vector<String> patatacaliente;
 		patatacaliente = input.Tokenize(patatacaliente);
-		
-
-
+		*/
+		Vector<int> jelou(3);
+		jelou.num_elements = 3;
+		jelou[0] = 0;
+		jelou[1] = 1;
+		jelou[2] = 2;
+		int x;
+		if (jelou.pop_back(x)){
+			printf("%d", x);
+		}
 
 		World Museum;
 
