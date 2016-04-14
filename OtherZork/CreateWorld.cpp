@@ -41,7 +41,7 @@ void World::CreateWorld(){
 
 	//The player should start in the ENTRANCE
 	players->currentpos = "Entrance";
-	
+
 
 	// The exits are PATHS that connect two rooms
 	// ------------- PATHS --------------

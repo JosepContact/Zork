@@ -12,4 +12,3 @@ public:
 	char * room1, *room2;
 };
 #endif
-

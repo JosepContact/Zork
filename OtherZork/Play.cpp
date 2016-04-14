@@ -133,4 +133,3 @@ bool World::Play(){
 	} while (!valaction);
 	return false;
 }
-

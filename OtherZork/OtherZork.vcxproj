@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C98110B7-55D3-4C4C-A7DA-D35028CC7B53}</ProjectGuid>
-    <RootNamespace>NewSuperZork</RootNamespace>
+    <ProjectGuid>{BD087537-E7E3-46D6-8E46-500139754DDB}</ProjectGuid>
+    <RootNamespace>OtherZork</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,26 +64,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actions.cpp" />
-    <ClCompile Include="CreateWorld.cpp" />
-<<<<<<< HEAD:NewSuperZork/NewSuperZork.vcxproj
-    <ClCompile Include="Main.cpp" />
-=======
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyString.cpp" />
->>>>>>> origin/master:ZORK/ZORK.vcxproj
-    <ClCompile Include="Play.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="DynArray.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Exit.h" />
-    <ClInclude Include="Globals.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="ThisString.h" />
     <ClInclude Include="World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Actions.cpp" />
+    <ClCompile Include="CreateWorld.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Play.cpp" />
+    <ClCompile Include="ThisString.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
