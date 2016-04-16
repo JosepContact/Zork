@@ -1,10 +1,9 @@
 #include "World.h"
-#include "ThisString.h"
 
 #define NROOM 10
 #define NPLAY 1
 #define NEXIT 9
-#define NITEM 10
+#define NITEM 9
 
 World::World(){
 	rooms = new Room[NROOM];
@@ -15,18 +14,21 @@ World::World(){
 
 void World::CreateWorld(){
 
+
+
+
 	//Adding name and description to the rooms
 	// ------------ ROOMS ---------------
-	rooms[0].name = "Entrance";
-	rooms[1].name = "Hall";
-	rooms[2].name = "Security";
-	rooms[3].name = "Romanticism";
-	rooms[4].name = "Alley";
-	rooms[5].name = "Gargoyle";
-	rooms[6].name = "Egyptian";
-	rooms[7].name = "Store";
-	rooms[8].name = "Greek";
-	rooms[9].name = "Minotaur";
+	rooms[Entrance].name = "Entrance";
+	rooms[Hall].name = "Hall";
+	rooms[Security].name = "Security";
+	rooms[Romanticism].name = "Romanticism";
+	rooms[Alley].name = "Alley";
+	rooms[Gargoyle].name = "Gargoyle";
+	rooms[Egyptian].name = "Egyptian";
+	rooms[Store].name = "Store";
+	rooms[Greek].name = "Greek";
+	rooms[Minotaur].name = "Minotaur";
 
 	rooms[0].desc = "At the west you spot several ticket windows. There are huge beautiful columns around you that have pictures of the art that can be found in the museum.\n'Looks like this is the spot!' you think.";
 	rooms[1].desc = "There is a huge tomb in the center of the room next to some tall archs. Weird unexplainable pieces of art are all around.\nYou can see a staircase leading to the north.";
@@ -130,16 +132,15 @@ void World::CreateWorld(){
 
 	// ------------- ITEMS --------------
 
-	items[0].name = "Mirror";
-	items[1].name = "Lantern";
-	items[2].name = "Shiny Emerald";
-	items[3].name = "Sword";
-	items[4].name = "Shield";
-	items[5].name = "Piece Of Rod";
-	items[6].name = "Rod Of Aftermath";
-	items[7].name = "Store Room Key";
-	items[8].name = "Greek Room Key";
-	items[9].name = "Core Of Power";
+	items[0].name = "mirror";
+	items[1].name = "lantern";
+	items[2].name = "emerald";
+	items[3].name = "sword";
+	items[4].name = "shield";
+	items[5].name = "piece";
+	items[6].name = "rod";
+	items[7].name = "key";
+	items[8].name = "core";
 
 
 	items[0].desc = "It glows, the border is made of silver.";
@@ -150,42 +151,50 @@ void World::CreateWorld(){
 	items[5].desc = "Just a part of the Rod, I'm yet to find the main thing";
 	items[6].desc = "A sinister aura can be seen, it's darker than the night. You feel the evilness inside of it.";
 	items[7].desc = "Because it's a key and it says 'Store'...";
-	items[8].desc = "It's big and it says 'Greek Room'. You are not ashamed of your size though, you are a man.";
-	items[9].desc = "Two rings, one inside of the other are spinning very quickly, there's something inside that reminds you of a nebula.\n'So cool' You say out loud.";
+	items[8].desc = "Two rings, one inside of the other are spinning very quickly, there's something inside that reminds you of a nebula.\n'So cool' You say out loud.";
 
 	//YOU START WITH ONLY THE PIECE OF ROD SO
 
 	//0.Mirror
-	items[0].currentpos = "Alley";
+	rooms[Alley].Location.push_back(items[mirror]);
 	items[0].free = true;
 
 	//1.Lantern
-	items[0].currentpos = "Entrance";
+	rooms[Entrance].Location.push_back(items[lantern]);
 	items[1].free = true;
+
 	//2.Shiny Emerald
-	items[0].currentpos = "Egyptian";
+	rooms[Egyptian].Location.push_back(items[shiny_emerald]);
 	items[2].free = false;
+
 	//3.Sword
-	items[0].currentpos = "Hall";
+	rooms[Hall].Location.push_back(items[sword]);
 	items[3].free = false;
+
 	//4.Shield
-	items[0].currentpos = "Greek";
+	rooms[Greek].Location.push_back(items[shield]);
 	items[4].free = false;
+
 	//5.Piece Of Rod
-	items[0].currentpos = "Inventory";
-	items[5].free = true;
+	//It's already in the invetory
+	items[5].free = false;
+
 	//6.Rod Of Aftermath
-	items[0].currentpos = "None";
+	//Can only be crafted
 	items[6].free = false;
+
 	//7.Store Room Key
-	items[0].currentpos = "Security";
+	rooms[Security].Location.push_back(items[store_room_key]);
 	items[7].free = false;
-	//8.Greek Room Key
-	items[0].currentpos = "Security";
-	items[7].free = true;
-	//9.Core Of Unlimted Power
-	items[0].currentpos = "Minotaur";
-	items[7].free = false;
+
+	//8.Core Of Unlimted Power
+	rooms[Minotaur].Location.push_back(items[core_of_power]);
+	items[8].free = false;
+	
+	//INVENTORY
+	inventory.push_back(items[piece_of_rod]);
+	craftable.push_back(items[rod_of_aftermath]);
+
 }
 
 World::~World(){

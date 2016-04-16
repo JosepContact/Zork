@@ -1,5 +1,5 @@
 #include <assert.h>
-
+#include <stdio.h>
 #ifndef DYNARRAY_H
 #define DYNARRAY_H
 
@@ -15,6 +15,13 @@ public:
 	unsigned int capacity = BLOCK;
 	unsigned int num_elements = 0;
 public:
+	virtual ~Vector(){
+		if (num_elements > 0){
+		//	delete[] buffer;
+		}
+	}
+public:
+
 	Vector()
 	{
 		buffer = new TYPE[capacity];
@@ -43,19 +50,21 @@ public:
 			buffer[i] = v;
 		}
 	}
-	void push_back(const TYPE value)
+	void push_back(const TYPE & value)
 	{
 
-		if (num_elements == capacity)
+		if (num_elements >= capacity)
 		{
-			TYPE* newbuffer = new TYPE[capacity + 1];
+			TYPE* newbuffer = new TYPE[capacity];
 
-			for (int i = 0; i < num_elements; i++){
+			for (uint i = 0; i < num_elements; i++){
 				newbuffer[i] = buffer[i];
 			}
 			delete[] buffer;
 			capacity++;
 			buffer = newbuffer;
+			delete[] newbuffer;
+			num_elements++;
 		}
 
 		buffer[num_elements] = value;
@@ -100,7 +109,14 @@ public:
 			return false;
 		}
 	}
-	virtual ~Vector(){
+	void clear_at(uint pos){
+		for (; pos <= num_elements; pos++){
+			buffer[pos] = buffer[pos + 1];
+		}
+		num_elements--;
+	}
+	
+	void clear(){
 	}
 };
 // ADD: EMPTY / CLEAN / SIZE - AMOUNT OF ELEMENTS -  / CAPACITY - SPACE - / AT - IS THE SAME WITHOUT ASSERT / 

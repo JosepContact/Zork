@@ -1,10 +1,64 @@
 #include "ThisString.h"
 #include "World.h"
 
-bool World::DropPick(const char* object){
-
-	return NULL;
+void World::PickItem(const String & item){
+	int n_room = NULL;
+	bool success = false;
+	if (inventory.num_elements > 3){ // Are we already carrying 4 objects?
+		printf("Your inventory is full! You cannot carry more than 4 objects.\n");
+	}
+	else {
+		for (int i = 0; (i < 9); ++i){
+			if ((item == items[i].name) && (players->currentpos == rooms[room_sub_travel(items[i].name)].name) && (!success))
+			{
+				if (items[i].free)
+				{
+					success = true;
+					n_room = room_sub_travel(items[i].name);
+					printf("You picked %s.\n- \%s.", items[i].name, items[i].desc);
+					// Place item in inventory
+					inventory.push_back(items[i]);
+					// change item 'free' state
+					items[i].free = false;
+					// change Location
+					rooms[n_room].Location.clear_at(item_sub_travel(items[i].name ,n_room));
+				}
+			}
+		}
+	}
+	if (!success) printf("Pick what?\n");
+	NEWLINE;
 }
+void World::DropItem(const String & item){
+	int n_room = NULL;
+	bool success = false;
+	if (inventory.num_elements == 0){ // It's empty
+		printf("The inventory is empty.\n");
+	}
+	else {
+		for (int i = 0; (i < 9); ++i){
+			if ((item == items[i].name) && (items[i].name == inventory.buffer[inventory_sub_travel(items[i].name)].name) && (!success))
+			{
+					success = true;
+					printf("You dropped %s.\n", items[i].name);
+					// Place item in room
+					n_room = player_sub_travel(players->currentpos);
+					rooms[n_room].Location.push_back(items[i]);
+					// change item 'free' state
+					items[i].free = true;
+					// change Location
+					inventory.clear_at(inventory_sub_travel(items[i].name));
+			}
+		}
+	}
+	if (!success) printf("You don't have such object.\n");
+	NEWLINE;
+}
+
+
+
+
+
 
 void World::HelpCommand() const{
 	// ------- HELP COMMANDS----------
@@ -43,7 +97,7 @@ void World::currpos() const{
 
 	for (int i = 0; i < 10; i++){
 		if (players->currentpos == rooms[i].name){
-			printf("- %s\n%s\n", rooms[i].name, rooms[i].desc);
+			printf("--> %s\n%s\n", rooms[i].name, rooms[i].desc);
 			NEWLINE;
 		}
 	}

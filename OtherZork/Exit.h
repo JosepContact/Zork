@@ -10,5 +10,6 @@ public:
 	bool locked;
 	int dir1, dir2;
 	char * room1, *room2;
+public:
 };
 #endif

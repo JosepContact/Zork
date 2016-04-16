@@ -4,10 +4,12 @@
 String::String(unsigned int mem) {
 	string = new char[mem + 1];
 	string[mem] = '\0';
+	capacity = mem + 1;
 }
 
 String::String(){
 	string = nullptr;
+	capacity = NULL;
 }
 
 String::String(char* c_str) {

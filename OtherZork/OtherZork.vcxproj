@@ -80,6 +80,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="ThisString.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

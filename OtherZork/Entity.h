@@ -1,3 +1,5 @@
+#include "ThisString.h"
+
 #ifndef ENTITY_H
 #define ENTITY_H
 
@@ -6,9 +8,14 @@ class Entity{
 public:
 	char * name;
 	char * desc;
-public:
 
-	//void Entity::Look(const int &)const;
+public:
+/*	Entity::Entity(char * name, char * desc){
+		this->name = name;
+		this->desc = desc;
+	}*/
+	void Look()const{
+	}
 };
 
 

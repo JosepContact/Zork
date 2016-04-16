@@ -12,8 +12,10 @@ public:
 	Exit * exits;
 	Player * players;
 	Item * items;
+	Vector<Item> inventory;
+	Vector<Item> craftable;
 
-public:
+public: //play.cpp && actions.cpp
 	World::World();
 	void World::CreateWorld();
 	bool World::Play();
@@ -24,7 +26,13 @@ public:
 	void World::CloseDoor(const int &);
 	void World::currpos() const;
 	void World::HelpCommand() const;
-	bool World::DropPick(const char* object);
+	void World::PickItem(const String & item);
+	void World::DropItem(const String & item);
+public: //world.cpp
+	int World::room_sub_travel(const char* item_name) const;
+	int World::item_sub_travel(const char * item_name , uint n_room) const;
+	int World::inventory_sub_travel(const char* item_name) const;
+	int World::player_sub_travel(const char* player_pos) const;
 };
 
 #endif

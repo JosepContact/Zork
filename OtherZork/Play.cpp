@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "ThisString.h"
 #include "World.h"
 
 
@@ -20,8 +19,8 @@ bool World::Play(){
 		//GET ACTION
 		fgets(action, 30, stdin);
 		String input(fp);
-
-
+		Vector<String> Support;
+		Support = input.Tokenize(Support);
 		// Counts how many words have been inputed to later switch(n_words):
 		for (i = 0; i < strlen(action); c = action[i++]){
 			if (c == ' ') number_words++;
@@ -90,8 +89,11 @@ bool World::Play(){
 				printf("What door?\n");
 			}
 			//--------------PICK_DROP_ITEMS-----------
-			else if ((input == "pick") || (input == "drop")){
-				printf("dafuq");
+			else if ((Support[0] == "pick")){
+				PickItem(Support[1]);
+			}
+			else if ((Support[0] == "drop")){
+				DropItem(Support[1]);
 			}
 			else printf("What?\n");
 			break;

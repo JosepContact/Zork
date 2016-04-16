@@ -6,6 +6,6 @@
 class Player : public Entity{
 public:
 	char * currentpos;
-
+public:
 };
 #endif
