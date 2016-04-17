@@ -2,7 +2,7 @@
 
 #define NROOM 10
 #define NPLAY 1
-#define NEXIT 9
+#define NEXIT 10
 #define NITEM 9
 
 World::World(){
@@ -36,7 +36,7 @@ void World::CreateWorld(){
 	rooms[3].desc = "The paintings here are very well made but very depressing. The light is also poor bringing sad atmosphere.";
 	rooms[4].desc = "It's very dark because the clouds are covering the moon. Lightinings momentarily illuminate the alley while your clothes get wet in seconds.\nYou can see some windows at the north.";
 	rooms[5].desc = "The darkest creature you have ever seen stays idle while looking through the window. It should be a statue but perhaps the flickering lights from the hellish room are making it seem more than alive.";
-	rooms[6].desc = "A squared sized room with four pillars and four mythological statues representing mythological gods.\n There is a mural covering each of the walls.";
+	rooms[6].desc = "A squared sized room with four pillars and four mythological statues representing mythological gods.\n There is a mural covering each of the walls and a white swirl that looks like a portal...";
 	rooms[7].desc = "It's too dark to barely see anything.";
 	rooms[8].desc = "The statue of Athena in the center might be four meters tall, looks like she's holding a shield with both hands. The room is very well illuminated thanks to the torches placed on the floor.\n 'Is this still part of the museum?' you think.";
 	rooms[9].desc = "The infamous creature looks at you straight in the eyes. Fortunately, its limbs have been gripped with titanic chains\n";
@@ -130,6 +130,13 @@ void World::CreateWorld(){
 	exits[8].dir2 = e;
 	exits[8].locked = false;
 
+	exits[9].room1 = "Egyptian";
+	exits[9].room2 = "Egyptian";
+	exits[9].name = "Portal";
+	exits[9].desc = "It's slowly rotating, it goes faster and whispers sound louder as you get closer.";
+	exits[9].dir1 = n;
+	exits[9].dir2 = n;
+	exits[9].locked = false;
 	// ------------- ITEMS --------------
 
 	items[0].name = "mirror";
@@ -195,6 +202,8 @@ void World::CreateWorld(){
 	inventory.push_back(items[core]);
 	inventory.push_back(items[piece]);
 
+
+	puzzle = false;
 }
 
 World::~World(){

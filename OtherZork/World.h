@@ -14,16 +14,19 @@ public:
 	Item * items;
 	Vector<Item> inventory;
 	Vector<Item> equipment;
+	bool puzzle;
+
 
 public: //play.cpp && actions.cpp
 	World::World();
 	void World::CreateWorld();
 	bool World::Play();
 	virtual World::~World();
-	bool World::updatepos(const int &);
-	void World::lookexit(const int &) const;
-	void World::OpenDoor(const int &);
-	void World::CloseDoor(const int &);
+	bool World::updatepos(int );
+	bool World::Puzzle();
+	void World::lookexit(int ) const;
+	void World::OpenDoor(int );
+	void World::CloseDoor(int );
 	void World::currpos() const;
 	void World::HelpCommand() const;
 	// ITEM FUNCTIONS

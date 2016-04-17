@@ -72,7 +72,12 @@ public:
 	bool String::operator==(const String& str) const {
 		return strcmp(this->string, str.string) == 0;
 	}
-
+	bool String::operator!=(const String& str) const {
+		return strcmp(this->string, str.string) == 1;
+	}
+	bool String::operator!=(const char* c_str) const {
+		return strcmp(this->string, c_str) == 1;
+	}
 	const String& String::operator=(const String& str) {
 		if (this->capacity < str.capacity) {
 			delete[] this->string;

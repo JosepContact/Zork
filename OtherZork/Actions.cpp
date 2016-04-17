@@ -1,5 +1,45 @@
-#include "ThisString.h"
+
 #include "World.h"
+#include <stdio.h>
+
+bool World::Puzzle(){
+	printf("!!! You go through the portal to appear in the exact same room. There are now four portals.\n");
+	char action[30], *fp = action;
+	
+	int puzzle = 0;
+	do {
+		printf("Action: ");
+		fgets(action, 30, stdin);
+		String input(fp);
+		Vector<String> Support;
+		Support = input.Tokenize(Support);
+
+		if ((Support[0] == "north") || ((Support[0] == "go") && (Support[1] == "north")) && ((puzzle == 0) || (puzzle == 2)) ){
+			if (puzzle == 2){
+				printf("A door has been opened somewhere. The portals have disappeared\n");
+				exits[7].locked = false;
+				return true;
+			}
+			puzzle++;
+		}
+		else if ((Support[0] == "west") || ((Support[0] == "go") && (Support[1] == "west")) && (puzzle == 1)){
+			puzzle++;
+		}
+		else if ((Support[0] != "south") || ((Support[0] != "go") && (Support[1] != "south"))){
+			puzzle = -1;
+		}
+
+		else {
+			printf("A high pitched scream can be heard. It comes from the other side of the portals, three of them fade away.\n");
+			return false;
+		}
+	} while ( puzzle > 0  );
+	return false;
+
+
+}
+
+
 
 bool World::GetRod(const String & part1, const String & part2){
 	bool partpiece = false, partcore = false;
@@ -177,7 +217,7 @@ void World::HelpCommand() const{
 }
 
 // -------- CLOSE AND OPEN DOORS COMMANDS ------------
-void World::CloseDoor(const int &direction){
+void World::CloseDoor( int direction){
 
 	for (int i = 0; (i < 9); ++i){
 		if ((players->currentpos == exits[i].room1) && (exits[i].dir1 == direction) || (players->currentpos == exits[i].room2) && (exits[i].dir2 == direction)){
@@ -190,7 +230,7 @@ void World::CloseDoor(const int &direction){
 	}
 	NEWLINE;
 }
-void World::OpenDoor(const int &direction){
+void World::OpenDoor(int direction){
 	int i = 0;
 	for (i = 0; (i < 9); ++i){
 		if ((players->currentpos == exits[i].room1) && (exits[i].dir1 == direction) || (players->currentpos == exits[i].room2) && (exits[i].dir2 == direction)){
@@ -211,10 +251,14 @@ void World::currpos() const{
 			NEWLINE;
 		}
 	}
+	if ((players->currentpos == "Egyptian") && (!puzzle)){
+		printf("!!! You can hear a faint noise behind the walls, like hundreds of whispers.\n");
+		NEWLINE;
+	}
 }
 
 // ----------- CHECKS THE EXITS IN BOTH WAYS --------------
-bool World::updatepos(const int &direction){
+bool World::updatepos( int direction){
 
 	int i = 0;
 	for (i = 0; (i < 9); ++i){
@@ -245,9 +289,9 @@ bool World::updatepos(const int &direction){
 	return false;
 }
 // ----------- How does the exit look like? -----------
-void World::lookexit(const int &direction) const{
+void World::lookexit( int direction) const{
 
-	for (int i = 0; (i < 9); ++i){
+	for (int i = 0; (i < 10); ++i){
 		if ((players->currentpos == exits[i].room1) && (exits[i].dir1 == direction) || (players->currentpos == exits[i].room2) && (exits[i].dir2 == direction)){
 			printf("- %s\n%s\n", exits[i].name, exits[i].desc);
 			NEWLINE;

@@ -62,18 +62,17 @@ bool World::Play(){
 			break;
 		case TWO_WORDS:
 			// --------------MOVES---------------
-
-			if (input == "go north\n"){
-				valaction = updatepos(n);
-			}
-			else if (input == "go south\n"){
-				valaction = updatepos(s);
-			}
-			else if (input == "go east\n"){
-				valaction = updatepos(e);
-			}
-			else if (input == "go west\n"){
-				valaction = updatepos(w);
+			if (Support[0] == "go"){
+				if ((players->currentpos == "Egyptian") && (!puzzle)){
+					if (Support[1] == "north") puzzle = Puzzle();
+					else if (Support[1] == "east") printf("You can't go that way.\n");
+					else if (Support[1] == "west") printf("You can't go that way.\n");
+					else if (Support[1] == "south") valaction = updatepos(s);
+				}
+				else if (Support[1] == "north") valaction = updatepos(n);
+				else if (Support[1] == "south") valaction = updatepos(s);
+				else if (Support[1] == "east") valaction = updatepos(e);
+				else if (Support[1] == "west") valaction = updatepos(w);
 			}
 			//--------------LOOK_EXITS--------------
 			else if (input == "look south\n"){
