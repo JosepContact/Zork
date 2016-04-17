@@ -109,13 +109,6 @@ public:
 			return false;
 		}
 	}
-	void clear_at(uint pos){
-		for (; pos <= num_elements; pos++){
-			buffer[pos] = buffer[pos + 1];
-		}
-		num_elements--;
-	}
-	
 	void clear(){
 	}
 };

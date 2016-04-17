@@ -30,8 +30,8 @@ void World::CreateWorld(){
 	rooms[Greek].name = "Greek";
 	rooms[Minotaur].name = "Minotaur";
 
-	rooms[0].desc = "At the west you spot several ticket windows. There are huge beautiful columns around you that have pictures of the art that can be found in the museum.\n'Looks like this is the spot!' you think.";
-	rooms[1].desc = "There is a huge tomb in the center of the room next to some tall archs. Weird unexplainable pieces of art are all around.\nYou can see a staircase leading to the north.";
+	rooms[0].desc = "At the west you spot several ticket windows. There are huge beautiful columns around you that have pictures of the art that can be found in the museum.\n'Looks like this is the spot!' you think.\nYour lantern is on the floor, you should pick it.";
+	rooms[1].desc = "There is a huge tomb in the center of the room with a sword roughly stabbed in it next to some tall archs. Weird unexplainable pieces of art are all around.\nYou can see a staircase leading to the north.";
 	rooms[2].desc = "Old tiny room with some screens and a desktop.";
 	rooms[3].desc = "The paintings here are very well made but very depressing. The light is also poor bringing sad atmosphere.";
 	rooms[4].desc = "It's very dark because the clouds are covering the moon. Lightinings momentarily illuminate the alley while your clothes get wet in seconds.\nYou can see some windows at the north.";
@@ -164,36 +164,36 @@ void World::CreateWorld(){
 	items[1].free = true;
 
 	//2.Shiny Emerald
-	rooms[Egyptian].Location.push_back(items[shiny_emerald]);
+	rooms[Egyptian].Location.push_back(items[emerald]);
 	items[2].free = false;
 
 	//3.Sword
 	rooms[Hall].Location.push_back(items[sword]);
-	items[3].free = false;
+	items[3].free = true;
 
 	//4.Shield
 	rooms[Greek].Location.push_back(items[shield]);
-	items[4].free = false;
+	items[4].free = true;
 
 	//5.Piece Of Rod
-	//It's already in the invetory
-	items[5].free = false;
+	//It's already in the inventory
+	items[5].free = true;
 
 	//6.Rod Of Aftermath
 	//Can only be crafted
 	items[6].free = false;
 
 	//7.Store Room Key
-	rooms[Security].Location.push_back(items[store_room_key]);
+	rooms[Security].Location.push_back(items[key]);
 	items[7].free = false;
 
 	//8.Core Of Unlimted Power
-	rooms[Minotaur].Location.push_back(items[core_of_power]);
+	rooms[Minotaur].Location.push_back(items[core]);
 	items[8].free = false;
 	
 	//INVENTORY
-	inventory.push_back(items[piece_of_rod]);
-	craftable.push_back(items[rod_of_aftermath]);
+	inventory.push_back(items[piece]);
+	craftable.push_back(items[rod]);
 
 }
 

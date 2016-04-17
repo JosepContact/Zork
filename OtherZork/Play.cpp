@@ -95,6 +95,13 @@ bool World::Play(){
 			else if ((Support[0] == "drop")){
 				DropItem(Support[1]);
 			}
+			//-------------EQUIP UNEQUIP ITEMS-----------
+			else if ((Support[0] == "equip")){
+				EquipItem(Support[1]);
+			}
+			else if ((Support[0] == "unequip")){
+				UnequipItem(Support[1]);
+			}
 			else printf("What?\n");
 			break;
 		case THREE_WORDS:

@@ -14,6 +14,7 @@ public:
 	Item * items;
 	Vector<Item> inventory;
 	Vector<Item> craftable;
+	Vector<Item> equipment;
 
 public: //play.cpp && actions.cpp
 	World::World();
@@ -28,11 +29,15 @@ public: //play.cpp && actions.cpp
 	void World::HelpCommand() const;
 	void World::PickItem(const String & item);
 	void World::DropItem(const String & item);
+	void World::EquipItem(const String & item);
+	void World::UnequipItem(const String & item);
 public: //world.cpp
-	int World::room_sub_travel(const char* item_name) const;
+	bool World::room_sub_travel(const char* item_name, uint&) const;
 	int World::item_sub_travel(const char * item_name , uint n_room) const;
-	int World::inventory_sub_travel(const char* item_name) const;
+	bool World::inventory_sub_travel(const char* item_name, uint&) const;
 	int World::player_sub_travel(const char* player_pos) const;
+	const Vector<Item> & World::clear_at(uint pos, Vector<Item> & items);
+	bool World::equipment_sub_travel(const char* item_name, uint& int_ret) const;
 };
 
 #endif
