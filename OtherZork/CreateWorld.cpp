@@ -148,7 +148,7 @@ void World::CreateWorld(){
 	items[2].desc = "This tiny piece could cost hundreds of dollars. Looks like it can be inserted somewhere.";
 	items[3].desc = "It's sharp and hard but not heavy at all.";
 	items[4].desc = "It's the toughest and lightest material I have ever seen! If it truly belonged to Athena, I can see why.";
-	items[5].desc = "Just a part of the Rod, I'm yet to find the main thing";
+	items[5].desc = "Just a part of the Rod, I'm yet to find the main thing.";
 	items[6].desc = "A sinister aura can be seen, it's darker than the night. You feel the evilness inside of it.";
 	items[7].desc = "Because it's a key and it says 'Store'...";
 	items[8].desc = "Two rings, one inside of the other are spinning very quickly, there's something inside that reminds you of a nebula.\n'So cool' You say out loud.";
@@ -189,11 +189,11 @@ void World::CreateWorld(){
 
 	//8.Core Of Unlimted Power
 	rooms[Minotaur].Location.push_back(items[core]);
-	items[8].free = false;
+	items[8].free = true;
 	
 	//INVENTORY
+	inventory.push_back(items[core]);
 	inventory.push_back(items[piece]);
-	craftable.push_back(items[rod]);
 
 }
 

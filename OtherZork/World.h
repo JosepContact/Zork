@@ -13,7 +13,6 @@ public:
 	Player * players;
 	Item * items;
 	Vector<Item> inventory;
-	Vector<Item> craftable;
 	Vector<Item> equipment;
 
 public: //play.cpp && actions.cpp
@@ -27,10 +26,14 @@ public: //play.cpp && actions.cpp
 	void World::CloseDoor(const int &);
 	void World::currpos() const;
 	void World::HelpCommand() const;
+	// ITEM FUNCTIONS
+	void World::Inventory() const;
+	bool World::LookItem(const String & item) const;
 	void World::PickItem(const String & item);
 	void World::DropItem(const String & item);
 	void World::EquipItem(const String & item);
 	void World::UnequipItem(const String & item);
+	bool World::GetRod(const String & part1, const String & part2);
 public: //world.cpp
 	bool World::room_sub_travel(const char* item_name, uint&) const;
 	int World::item_sub_travel(const char * item_name , uint n_room) const;

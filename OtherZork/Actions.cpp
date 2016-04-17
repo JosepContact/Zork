@@ -1,6 +1,79 @@
 #include "ThisString.h"
 #include "World.h"
 
+bool World::GetRod(const String & part1, const String & part2){
+	bool partpiece = false, partcore = false;
+	if (((part1 == "piece") && (part2 == "core"))){
+		for (int i = 0; i < inventory.num_elements; ++i){
+			if ((!partpiece) && inventory.buffer[i].name == items[piece].name)
+				partpiece = true;
+			if ((!partcore) && inventory.buffer[i].name == items[core].name)
+				partcore = true;
+		}
+		if (partpiece && partcore){
+			for (int i = 0; i < inventory.num_elements; ++i){
+				if (inventory.buffer[i].name == items[piece].name)
+					inventory = clear_at(i, inventory);
+			}
+			for (int i = 0; i < inventory.num_elements; ++i){
+				if (inventory.buffer[i].name == items[core].name)
+					inventory = clear_at(i, inventory);
+			}		
+			}
+			inventory.push_back(items[rod]);
+			NEWLINE;
+			printf("---> The core starts to shine as your piece is attached by a supernatural force. You get the rod.\n");
+			return true;
+		}
+		else
+		return false;
+}
+
+
+
+bool World::LookItem(const String & item) const
+{
+	for (uint i = 0; i < inventory.num_elements; ++i){
+		if (item == inventory.buffer[i].name){
+			printf("--> %s", inventory.buffer[i].desc);
+			NEWLINE;
+			NEWLINE;
+			return true;
+		}
+	}
+	return false;
+}
+void World::Inventory() const {
+	uint n_item;
+	if (inventory.num_elements == 0){ // It's empty
+		printf("The inventory is empty.\n");
+	}
+	else{
+		for (int i = 0; i < inventory.num_elements; ++i){
+
+			printf("-- %d. %s.\n", i, inventory.buffer[i].name);
+			/*	for (int i = 0; i < 9; ++i){
+					if ((equipment_sub_travel(items[i].name, n_item) && ((i = rod) || (i = sword) || (i = shield)) )){
+					printf("Equipped.\n");
+					break;
+					}
+					else if (((i = rod) || (i = sword) || (i = shield))){
+					printf("Unequipped.\n");
+					break;
+					}
+					else if (((i = core) || (i = piece))){
+					printf("Incomplete.\n");
+					break;
+					}
+					else printf("Regular Item.\n");
+					break;
+					}
+					}*/
+		}
+	}
+	NEWLINE;
+
+}
 void World::PickItem(const String & item){
 	uint n_room = NULL;
 	uint n_item = NULL;
@@ -98,7 +171,8 @@ void World::UnequipItem(const String & item){
 
 void World::HelpCommand() const{
 	// ------- HELP COMMANDS----------
-	printf("If you are in trouble you can try these commands:\ngo + (direction).\nlook or look + (direction)\nopen or unlock door + (direction)\nclose or lock door + (direction)\nquit");
+	printf("If you are in trouble you can try these commands:\ngo + (direction).\nlook or look + (direction)\nopen or unlock door + (direction)\nclose or lock door + (direction)\nquit\n");
+	printf("pick or drop + (name of item)\nequip or unequip + (name of item)\ninventory\n");
 	NEWLINE;
 }
 

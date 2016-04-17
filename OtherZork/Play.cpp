@@ -3,7 +3,7 @@
 
 
 
-enum words { ONE_WORD = 1, TWO_WORDS, THREE_WORDS };
+enum words { ONE_WORD = 1, TWO_WORDS, THREE_WORDS, FOUR_WORDS };
 
 bool World::Play(){
 	int number_words = 1;
@@ -31,6 +31,9 @@ bool World::Play(){
 		case ONE_WORD:
 			if (input == "quit\n"){
 				return true;
+			}
+			else if ((input == "inventory\n") || (input == "inv\n") || (input == "i\n")){
+				Inventory();
 			}
 			else if (input == "go\n"){ // no direction inputed case
 				printf("Go where?\n");
@@ -88,6 +91,10 @@ bool World::Play(){
 			else if ((input == "open door\n") || (input == "close door\n")){ // there can be from 1 to 4 doors
 				printf("What door?\n");
 			}
+			//-------------LOOK_ITEMS-------------
+			else if ((Support[0] == "look")){
+				if (!LookItem(Support[1])) printf("That item is not in your inventory, check 'inventory'.\n");
+			}
 			//--------------PICK_DROP_ITEMS-----------
 			else if ((Support[0] == "pick")){
 				PickItem(Support[1]);
@@ -133,10 +140,20 @@ bool World::Play(){
 			}
 			else printf("What?\n");
 			break;
+		case FOUR_WORDS:
+			// --------- GET THE ROD ---------------
+			if (((Support[0] == "put") || (Support[0] == "place")) && ((Support[2] == "into") || (Support[2] == "inside") || (Support[2] == "on"))) {
+				if (!GetRod(Support[1], Support[3])){
+					printf("Are you sure you can do that?\n");
+				}
+			}
+			else{
+				printf("What...?\n");
+			}
+			break;
 		default:
 			printf("Too many words.\n");
 			break;
-
 		}
 		number_words = 1;
 	} while (!valaction);
